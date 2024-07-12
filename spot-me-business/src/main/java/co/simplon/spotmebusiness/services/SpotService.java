@@ -18,6 +18,8 @@ import co.simplon.spotmebusiness.exceptions.GlobalErrors;
 import co.simplon.spotmebusiness.repositories.SpotRepository;
 import co.simplon.spotmebusiness.validation.FileSize;
 
+import static java.util.Objects.isNull;
+
 @Service
 public class SpotService {
 
@@ -33,7 +35,7 @@ public class SpotService {
 	public void create(SpotCreate inputs) {
 		if (spots.existsByNameIgnoreCaseAndLngAndLat(inputs.name(), inputs.lng(), inputs.lat())) {
 			throw new GlobalErrors();
-		} else if (!Objects.isNull(inputs.image())) {
+		} else if (!isNull(inputs.image())) {
 			if (inputs.image().getSize() > FileSize.TWO_MB) {
 				throw new FileSizeException();
 			} else if (!isValidType(inputs)) {
