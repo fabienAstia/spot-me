@@ -9,6 +9,7 @@ public class HandlerErrors extends RuntimeException {
 	List<GlobalErrors> globalErrorsList;
 
 
+
 	public HandlerErrors(List<GlobalErrors> globalErrorsList, List<FieldErrors> fieldErrorsList) {
 		this.globalErrorsList = globalErrorsList;
 		this.fieldErrorsList = fieldErrorsList;

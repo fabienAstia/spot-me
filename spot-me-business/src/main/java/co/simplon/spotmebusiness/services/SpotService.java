@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.UUID;
 
+import co.simplon.spotmebusiness.exceptions.HandlerErrors;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,7 +35,7 @@ public class SpotService {
 
 	public void create(SpotCreate inputs) {
 		if (spots.existsByNameIgnoreCaseAndLngAndLat(inputs.name(), inputs.lng(), inputs.lat())) {
-			throw new GlobalErrors();
+			throw new HandlerErrors().getGlobalErrorsList();
 		} else if (!isNull(inputs.image())) {
 			if (inputs.image().getSize() > FileSize.TWO_MB) {
 				throw new FileSizeException();
