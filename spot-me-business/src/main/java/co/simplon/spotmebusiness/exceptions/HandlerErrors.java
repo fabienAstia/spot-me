@@ -1,50 +1,44 @@
 package co.simplon.spotmebusiness.exceptions;
 
 
+import co.simplon.spotmebusiness.controllers.CustomFieldError;
+import co.simplon.spotmebusiness.controllers.CustomGlobalError;
+
 import java.util.List;
 
 public class HandlerErrors extends RuntimeException {
 
-	List<FieldErrors> fieldErrors;
-	List<GlobalErrors> globalErrors;
+	List<CustomFieldError> fieldErrors;
+	List<CustomGlobalError> globalErrors;
 
 
-
-	public HandlerErrors(List<GlobalErrors> globalErrors, List<FieldErrors> fieldErrors) {
+	public HandlerErrors(List<CustomFieldError> fieldErrors, List<CustomGlobalError> globalErrors) {
+		this.fieldErrors = fieldErrors;
 		this.globalErrors = globalErrors;
-		this.fieldErrors = fieldErrors;
 	}
 
-	public HandlerErrors() {
-	}
-
-
-	public HandlerErrors(List<FieldErrors> fieldErrors) {
-		this.fieldErrors = fieldErrors;
-	}
-
-	public List<FieldErrors> getFieldErrors() {
+	public List<CustomFieldError> getFieldErrors() {
 		return fieldErrors;
 	}
 
-	public void setFieldErrors(List<FieldErrors> fieldErrors) {
+	public void setFieldErrors(List<CustomFieldError> fieldErrors) {
 		this.fieldErrors = fieldErrors;
 	}
 
-	public List<GlobalErrors> getGlobalErrors() {
+	public List<CustomGlobalError> getGlobalErrors() {
 		return globalErrors;
 	}
 
-	public void setGlobalErrors(List<GlobalErrors> globalErrors) {
+	public void setGlobalErrors(List<CustomGlobalError> globalErrors) {
 		this.globalErrors = globalErrors;
 	}
 
-	public static class FieldErrors {
-
-		private final static Exception FILESIZE = new FileSizeException();
-		private final static Exception FILETYPE = new FileTypeException();
-
-		public FieldErrors() {
-		}
-	}
+//	public static class FieldErrors {
+//
+//		private final static Exception FILESIZE = new FileSizeException();
+//		private final static Exception FILETYPE = new FileTypeException();
+//
+//		public FieldErrors() {
+//		}
+//	}
 }
