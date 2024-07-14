@@ -5,33 +5,38 @@ import java.util.List;
 
 public class HandlerErrors extends RuntimeException {
 
-	List<FieldErrors> fieldErrorsList;
-	List<GlobalErrors> globalErrorsList;
+	List<FieldErrors> fieldErrors;
+	List<GlobalErrors> globalErrors;
 
 
 
-	public HandlerErrors(List<GlobalErrors> globalErrorsList, List<FieldErrors> fieldErrorsList) {
-		this.globalErrorsList = globalErrorsList;
-		this.fieldErrorsList = fieldErrorsList;
+	public HandlerErrors(List<GlobalErrors> globalErrors, List<FieldErrors> fieldErrors) {
+		this.globalErrors = globalErrors;
+		this.fieldErrors = fieldErrors;
 	}
 
 	public HandlerErrors() {
 	}
 
-	public List<FieldErrors> getFieldErrorsList() {
-		return fieldErrorsList;
+
+	public HandlerErrors(List<FieldErrors> fieldErrors) {
+		this.fieldErrors = fieldErrors;
 	}
 
-	public void setFieldErrorsList(List<FieldErrors> fieldErrorsList) {
-		this.fieldErrorsList = fieldErrorsList;
+	public List<FieldErrors> getFieldErrors() {
+		return fieldErrors;
 	}
 
-	public List<GlobalErrors> getGlobalErrorsList() {
-		return globalErrorsList;
+	public void setFieldErrors(List<FieldErrors> fieldErrors) {
+		this.fieldErrors = fieldErrors;
 	}
 
-	public void setGlobalErrorsList(List<GlobalErrors> globalErrorsList) {
-		this.globalErrorsList = globalErrorsList;
+	public List<GlobalErrors> getGlobalErrors() {
+		return globalErrors;
+	}
+
+	public void setGlobalErrors(List<GlobalErrors> globalErrors) {
+		this.globalErrors = globalErrors;
 	}
 
 	public static class FieldErrors {

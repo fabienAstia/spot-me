@@ -19,17 +19,7 @@ import co.simplon.spotmebusiness.exceptions.GlobalErrors;
 @RestControllerAdvice
 public class SpotControllerAdvice extends ResponseEntityExceptionHandler {
 
-//	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-//			HttpHeaders headers, HttpStatus status, WebRequest request) {
-//		Map<String, String> errors = new HashMap<>();
-//		ex.getBindingResult().getAllErrors().forEach((error) -> {
-//			String fieldName = ((FieldError) error).getField();
-//			String errorMessage = error.getDefaultMessage();
-//			errors.put(fieldName, errorMessage);
-//		});
-//		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
-//	}
-
+//Exception to be thrown when validation on an argument annotated with @Valid fails
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			org.springframework.http.HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 		System.out.println("ControllerAdvice.handleMethodArgumentNotValid()");
