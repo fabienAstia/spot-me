@@ -14,5 +14,4 @@ public class FileTypeException extends RuntimeException {
 		this.name = "image";
 		this.code = "FileType";
 	}
-
 }

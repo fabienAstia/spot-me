@@ -27,14 +27,14 @@ public class SpotControllerAdvice extends ResponseEntityExceptionHandler {
 			HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
 		System.out.println("ControllerAdvice.handleMethodArgumentNotValid()");
-		List<FieldError> errors = ex.getFieldErrors();
+		List<FieldError> errors = ex.getBindingResult().getFieldErrors();
 		List<ObjectError> globalErrors = ex.getGlobalErrors();
 		List<CustomFieldError> customErrors = new ArrayList<>();
 		List<CustomGlobalError> customGlobalErrors = new ArrayList<>();
 
-		for (FieldError error : errors) {
-			String fieldName = error.getField();
-			String code = error.getCode();
+		for (FieldError fieldError : errors) {
+			String fieldName = fieldError.getField();
+			String code = fieldError.getCode();
 			CustomFieldError customFieldError = new CustomFieldError(fieldName, code);
 			customErrors.add(customFieldError);
 		}
