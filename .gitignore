@@ -9,6 +9,7 @@ design
 **/.settings
 **/.classpath
 
+**/spot-me-business.iml
 **/.mvn
 **/mvnw*
 **/target

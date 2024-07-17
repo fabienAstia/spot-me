@@ -2,6 +2,7 @@ package co.simplon.spotmebusiness.controllers;
 
 import java.util.Collection;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +15,8 @@ import co.simplon.spotmebusiness.dtos.SpotCreate;
 import co.simplon.spotmebusiness.dtos.SpotView;
 import co.simplon.spotmebusiness.services.SpotService;
 import jakarta.validation.Valid;
+
+import static org.springframework.http.ResponseEntity.ok;
 
 // /spots => collection of resources of type "Spot"
 @RequestMapping("/spots")
@@ -31,8 +34,9 @@ public class SpotController {
 	// POST "/spots" => Unique Rest endpoint identifier in the application
 
 	@PostMapping
-	void create(@Valid @ModelAttribute SpotCreate inputs) {
+	public ResponseEntity<Object> create(@Valid @ModelAttribute SpotCreate inputs) {
 		service.create(inputs);
+		return ResponseEntity.ok("spot created");
 	}
 
 	@GetMapping
