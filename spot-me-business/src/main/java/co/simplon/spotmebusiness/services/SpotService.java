@@ -36,7 +36,8 @@ public class SpotService {
 	public void create(SpotCreate inputs) {
 		if (spots.existsByNameIgnoreCaseAndLngAndLat(inputs.name(), inputs.lng(), inputs.lat())) {
 			throw new GlobalErrors();
-		} else if (!isNull(inputs.image())) {
+		}
+		if (!isNull(inputs.image())) {
 			if (inputs.image().getSize() > FileSize.TWO_MB) {
 				throw new FileSizeException();
 			} else if (!isValidType(inputs)) {
