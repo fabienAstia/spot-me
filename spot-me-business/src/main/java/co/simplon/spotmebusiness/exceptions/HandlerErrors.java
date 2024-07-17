@@ -6,11 +6,10 @@ import co.simplon.spotmebusiness.controllers.CustomGlobalError;
 
 import java.util.List;
 
-public class HandlerErrors extends RuntimeException {
+public class HandlerErrors  {
 
 	List<CustomFieldError> fieldErrors;
 	List<CustomGlobalError> globalErrors;
-
 
 	public HandlerErrors(List<CustomFieldError> fieldErrors, List<CustomGlobalError> globalErrors) {
 		this.fieldErrors = fieldErrors;
@@ -33,12 +32,4 @@ public class HandlerErrors extends RuntimeException {
 		this.globalErrors = globalErrors;
 	}
 
-//	public static class FieldErrors {
-//
-//		private final static Exception FILESIZE = new FileSizeException();
-//		private final static Exception FILETYPE = new FileTypeException();
-//
-//		public FieldErrors() {
-//		}
-//	}
 }

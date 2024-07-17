@@ -8,6 +8,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -23,16 +24,17 @@ import co.simplon.spotmebusiness.exceptions.GlobalErrors;
 public class SpotControllerAdvice extends ResponseEntityExceptionHandler {
 
 //Exception to be thrown when validation on an argument annotated with @Valid fails
+	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
 		System.out.println("ControllerAdvice.handleMethodArgumentNotValid()");
-		List<FieldError> errors = ex.getBindingResult().getFieldErrors();
+		List<FieldError> fieldErrors = ex.getFieldErrors();
 		List<ObjectError> globalErrors = ex.getGlobalErrors();
 		List<CustomFieldError> customErrors = new ArrayList<>();
 		List<CustomGlobalError> customGlobalErrors = new ArrayList<>();
 
-		for (FieldError fieldError : errors) {
+		for (FieldError fieldError : fieldErrors) {
 			String fieldName = fieldError.getField();
 			String code = fieldError.getCode();
 			CustomFieldError customFieldError = new CustomFieldError(fieldName, code);
@@ -45,7 +47,6 @@ public class SpotControllerAdvice extends ResponseEntityExceptionHandler {
 		}
 
 		HandlerErrors handlerErrors = new HandlerErrors(customErrors, customGlobalErrors);
-
 		return handleExceptionInternal(ex, handlerErrors, headers, status, request);
 	}
 
@@ -54,6 +55,7 @@ public class SpotControllerAdvice extends ResponseEntityExceptionHandler {
 		System.out.println("ControllerAdvice.handleExceptionInternal()");
 		return super.handleExceptionInternal(ex, body, headers, statusCode, request);
 	}
+
 	@ResponseBody
 	@ExceptionHandler(value = GlobalErrors.class)
 	public ResponseEntity<?> handleSpotAlreadyExistsException(GlobalErrors exception) {
