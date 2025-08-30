@@ -48,6 +48,7 @@ Exemple de JSON attendu :
   },
   "globalErrors": ["SpotUnique"]
 }
+```
 
 ## Modèle de données
 ## DDL
