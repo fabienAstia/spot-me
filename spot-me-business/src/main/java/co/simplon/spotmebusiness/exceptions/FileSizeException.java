@@ -14,5 +14,5 @@ public class FileSizeException extends RuntimeException {
 		this.name = "image";
 		this.code = "FileSize!!!!!";
 	}
-
+	
 }

@@ -2,10 +2,12 @@ package co.simplon.spotmebusiness.services;
 
 import java.io.File;
 import java.util.Collection;
-import java.util.Objects;
 import java.util.UUID;
 
-import co.simplon.spotmebusiness.exceptions.HandlerErrors;
+import co.simplon.spotmebusiness.exceptions.FileSizeException;
+import co.simplon.spotmebusiness.exceptions.FileTypeException;
+import co.simplon.spotmebusiness.exceptions.GlobalErrors;
+import co.simplon.spotmebusiness.validation.FileSize;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,11 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import co.simplon.spotmebusiness.dtos.SpotCreate;
 import co.simplon.spotmebusiness.dtos.SpotView;
 import co.simplon.spotmebusiness.entities.Spot;
-import co.simplon.spotmebusiness.exceptions.FileSizeException;
-import co.simplon.spotmebusiness.exceptions.FileTypeException;
-import co.simplon.spotmebusiness.exceptions.GlobalErrors;
 import co.simplon.spotmebusiness.repositories.SpotRepository;
-import co.simplon.spotmebusiness.validation.FileSize;
 
 import static java.util.Objects.isNull;
 
