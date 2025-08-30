@@ -51,7 +51,7 @@ Exemple de JSON attendu :
 
 ## Modèle de données
 ## DDL
-```postgres
+```
 DROP TABLE IF EXISTS t_spots, t_categories;
 
 CREATE TABLE t_categories (
