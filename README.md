@@ -85,3 +85,25 @@ INSERT INTO t_spots (spot_name, spot_lat, spot_long, spot_desc) VALUES
 	('Aux pigeons blancs', 43.383331, -1.66667, 'Restaurant de cuisine traditionnelle à St Jean de Luz');
 
 ```
+
+## Structure du projet
+```
+src/main/java/co/simplon/spotmebusiness
+ ├── controllers        # Contrôleurs REST (SpotController, SpotControllerAdvice, etc.)
+ ├── dtos               # Objets de transfert (SpotCreate, SpotView)
+ ├── entities           # Entités JPA (Spot)
+ ├── exceptions         # Gestion des exceptions & erreurs personnalisées
+ ├── repositories       # Accès aux données (SpotRepository)
+ ├── services           # Logique métier (SpotService)
+ ├── validation         # Validateurs personnalisés
+ └── SpotMeBusinessApplication.java   # Classe principale Spring Boot
+```
+
+## Lancer le projet 
+### Prérequis
+- Java 17
+- Maven 3+
+- PostrgreSQL (avec une base spotme configurée dans application.properties)
+
+### Lancer le projet
+mvn spring-boot:run
